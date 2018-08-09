@@ -1,0 +1,23 @@
+{
+  "name": "sam-test-fac",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamJust/sam-test-fac.git"
+  },
+  "author": "Sam Just",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/SamJust/sam-test-fac/issues"
+  },
+  "homepage": "https://github.com/SamJust/sam-test-fac#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}
