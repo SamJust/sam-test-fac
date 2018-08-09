@@ -7,7 +7,11 @@ const app = express();
 
 const urlencodedBodyparser = bodyParser.urlencoded({ extended: true });
 
-app.use(urlencodedBodyparser)
+app.use(urlencodedBodyparser);
+
+app.get('/', (req, res) => {
+  res.send('hello world');
+});
 
 app.post('/new-message', (req, res)=>{
   console.log(req.body);
