@@ -17,7 +17,7 @@ app.post('/new-message', (req, res)=>{
 
   let message = '';
 
-  if(req.body.message.text === '/hell') {
+  if(req.body.message.text === '/hate') {
     message = 'Well... Hello there. It\'s not hell BTW';
   } else {
     message = "Don't know what you are talking about... May be later... Yeah. Comee back later";
