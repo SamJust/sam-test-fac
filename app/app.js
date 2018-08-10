@@ -14,13 +14,19 @@ app.use(jsonBodyparser);
 const botId = '674676277:AAHepw6YV5F6joA_qB8aogHDLur3l9EYTgI';
 
 app.post('/new-message', (req, res)=>{
-
   const { message } = req.body;
+  const messageText = GetBotResponse(message.text);
 
-  const url = `https://api.telegram.org/bot${botId}/sendMessage`;
-  request.post(url, {
+  const body = {
     chat_id:message.from.id,
-    text:GetBotResponse(message.text)
+    text: messageText
+  };
+  
+  const url = `https://api.telegram.org/bot${botId}/sendMessage`;
+  request.post({
+    url,
+    json:true,
+    body
   }).then(data =>{
     console.log('message sended');
   }).catch( err => {
