@@ -20,7 +20,7 @@ app.post('/new-message', (req, res)=>{
   if(req.body.message.text === '/hate') {
     message = 'Well... Hello there. It\'s not hell BTW';
   } else {
-    message = "Don't know what you are talking about... May be later... Yeah. Comee back later";
+    message = "Don't know what you are talking about... May be later... Yeah. Come back later";
   }
 
   const url = `https://api.telegram.org/bot${botId}/sendMessage?chat_id=${req.body.message.from.id}&text=${message}`
