@@ -13,7 +13,7 @@ app.use(jsonBodyparser);
 const botId = '674676277:AAHepw6YV5F6joA_qB8aogHDLur3l9EYTgI';
 
 app.post('/new-message', (req, res)=>{
-  console.log(req.body);
+  console.log(req.body.message.text);
 
   let message = '';
 
