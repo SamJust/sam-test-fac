@@ -6,11 +6,12 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 const urlencodedBodyparser = bodyParser.urlencoded({ extended: true });
+const jsonBodyparser = bodyParser.json();
 
+app.use(jsonBodyparser);
 app.use(urlencodedBodyparser);
 
 app.post('/new-message', (req, res)=>{
-  console.log('test');
   console.log(req.body);
 });
 
