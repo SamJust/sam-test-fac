@@ -5,14 +5,22 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-const urlencodedBodyparser = bodyParser.urlencoded({ extended: true });
 const jsonBodyparser = bodyParser.json();
 
 app.use(jsonBodyparser);
-app.use(urlencodedBodyparser);
+
+const botId = '674676277:AAHepw6YV5F6joA_qB8aogHDLur3l9EYTgI';
 
 app.post('/new-message', (req, res)=>{
   console.log(req.body);
+
+  const url = `https://api.telegram.org/bot${botId}/sendMessage?chat_id=${req.body.message.from.id}&text=I'm still work in progress. don't Come back later`
+  request.post(url).then(data =>{
+    console.log('message sended');
+  }).catch( err => {
+    console.log(err.response.body);
+  });
+  res.end();
 });
 
 app.listen(PORT, () => {
