@@ -9,11 +9,8 @@ const urlencodedBodyparser = bodyParser.urlencoded({ extended: true });
 
 app.use(urlencodedBodyparser);
 
-app.get('/', (req, res) => {
-  res.send('hello world');
-});
-
 app.post('/new-message', (req, res)=>{
+  console.log('test');
   console.log(req.body);
 });
 
@@ -22,3 +19,5 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
+
+// curl -F "url=https://sam-test-fac.herokuapp.com/new-message"  https://api.telegram.org/bot674676277:AAHepw6YV5F6joA_qB8aogHDLur3l9EYTgI/setWebhook
