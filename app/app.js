@@ -15,7 +15,16 @@ const botId = '674676277:AAHepw6YV5F6joA_qB8aogHDLur3l9EYTgI';
 app.post('/new-message', (req, res)=>{
   console.log(req.body);
 
-  const url = `https://api.telegram.org/bot${botId}/sendMessage?chat_id=${req.body.message.from.id}&text=I'm still work in progress. don't Come back later`
+  let message = '';
+
+  switch (req.body.message.text) {
+    case '/hell':
+      message = 'Well... Hello there. It\'s not hell BTW';
+      break;
+    default:message = "Don't know what you are talking about... May be later... Yeah. Comee back later";
+  }
+
+  const url = `https://api.telegram.org/bot${botId}/sendMessage?chat_id=${req.body.message.from.id}&text=${message}`
   request.post(url).then(data =>{
     console.log('message sended');
   }).catch( err => {
