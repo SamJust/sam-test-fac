@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('./config.json');
+const request = require('request-promise-native');
 const PORT = process.env.PORT || 3001;
 
 const app = express();
