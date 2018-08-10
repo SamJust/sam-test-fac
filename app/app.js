@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('./config.json');
 const request = require('request-promise-native');
+const GetBotResponse = require('../controllers');
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -13,18 +14,14 @@ app.use(jsonBodyparser);
 const botId = '674676277:AAHepw6YV5F6joA_qB8aogHDLur3l9EYTgI';
 
 app.post('/new-message', (req, res)=>{
-  console.log(req.body.message.text);
 
-  let message = '';
+  const { message } = req.body;
 
-  if(req.body.message.text === '/hate') {
-    message = 'Well... Hello there. It\'s not hell BTW';
-  } else {
-    message = "Don't know what you are talking about... May be later... Yeah. Comee back later";
-  }
-
-  const url = `https://api.telegram.org/bot${botId}/sendMessage?chat_id=${req.body.message.from.id}&text=${message}`
-  request.post(url).then(data =>{
+  const url = `https://api.telegram.org/bot${botId}/sendMessage`;
+  request.post(url, {
+    chat_id:message.from.id,
+    text:GetBotResponse(message.text)
+  }).then(data =>{
     console.log('message sended');
   }).catch( err => {
     console.log(err.response.body);
